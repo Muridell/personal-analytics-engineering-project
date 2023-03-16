@@ -37,7 +37,7 @@ sources:
 
   - name: toys
     database: MURTADHA_AE_PROJECT
-    schema: MEXICO_TOYS_DATA
+    schema: MEXICO_TOYS
     tables:
       - name: INVENTORY
       - name: PRODUCTS
