@@ -1,0 +1,109 @@
+version: 2
+
+sources:
+  - name: airbnb
+    database: MURTADHA_AE_PROJECT
+    schema: AIRBNB
+    tables:
+      - name: LISTINGS
+      - name: REVIEWS
+
+  - name: airline
+    database: MURTADHA_AE_PROJECT
+    schema: AIRLINE_PASSENGER_SATISFACTION
+    tables:
+      - name: AIRLINE_PASSENGER_SATISFACTION
+
+  - name: chess
+    database: MURTADHA_AE_PROJECT
+    schema: CHESS_GAME_ONLINE
+    tables:
+      - name: CHESS_GAMES
+  
+  - name: jordan_lebron
+    database: MURTADHA_AE_PROJECT
+    schema: JORDAN_VS_LEBRON
+    tables:
+      - name: JORDAN_CAREER
+      - name: JORDAN_PLAYOFFS
+      - name: LEBRON_CAREER
+      - name: LEBRON_PLAYOFFS
+
+  - name: marketing
+    database: MURTADHA_AE_PROJECT
+    schema: MARKETING
+    tables:
+      - name: MARKETING_DATA
+
+  - name: toys
+    database: MURTADHA_AE_PROJECT
+    schema: MEXICO_TOYS_DATA
+    tables:
+      - name: INVENTORY
+      - name: PRODUCTS
+      - name: SALES
+      - name: STORES
+
+  - name: pizza
+    database: MURTADHA_AE_PROJECT
+    schema: PIZZA_SALES
+    tables:
+      - name: ORDERS
+      - name: ORDER_DETAILS
+      - name: PIZZAS
+      - name: PIZZA_TYPES
+
+  - name: remote_work
+    database: MURTADHA_AE_PROJECT
+    schema: REMOTE_WORK_SURVEY
+    tables:
+      - name: _2020_RWS
+      - name: _2021_RWS
+
+  - name: movies
+    database: MURTADHA_AE_PROJECT
+    schema: ROTTEN_TOMATO_MOVIES
+    tables:
+      - name: ROTTEN_TOMATO_MOVIES
+  
+  - name: sp500
+    database: MURTADHA_AE_PROJECT
+    schema: SP500_STOCK_PRICE
+    tables:
+      - name: S_P_500_STOCK_PRICES_2014_2017
+
+  - name: space_mission
+    database: MURTADHA_AE_PROJECT
+    schema: SPACE_MISSION
+    tables:
+      - name: SPACE_MISSIONS
+
+  - name: telecom
+    database: MURTADHA_AE_PROJECT
+    schema: TELECOM_CUSTOMER_CHURN
+    tables:
+      - name: TELECOM_CUSTOMER_CHURN
+      - name: TELECOM_ZIPCODE_POPULATION
+
+  - name: ufo
+    database: MURTADHA_AE_PROJECT
+    schema: UFO_SIGHTING
+    tables:
+      - name: UFO_SIGHTINGS_SCRUBBED
+
+  - name: unicorn
+    database: MURTADHA_AE_PROJECT
+    schema: UNICORN
+    tables:
+      - name: UNICORN_COMPANIES
+
+  - name: world_cup
+    database: MURTADHA_AE_PROJECT
+    schema: WORLD_CUP
+    tables:
+      - name: INTERNATIONAL_MATCHES
+      - name: WORLD_CUPS
+      - name: WORLD_CUP_MATCHES
+      - name: _2022_WORLD_CUP_GROUPS
+      - name: _2022_WORLD_CUP_MATCHES
+      - name: _2022_WORLD_CUP_SQUADS
