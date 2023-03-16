@@ -1,0 +1,48 @@
+{{
+    config(
+        materialized='table',
+        schema = 'airbnb',
+        tags = ['airbnb']
+    )
+}}
+
+WITH HOST_LISTINGS AS 
+(
+SELECT  LISTING_ID, 
+        NAME AS LISTING_DESC,
+        HOST_ID AS HOST,
+        HOST_SINCE AS HOST_JOIN_DATE,
+        HOST_LOCATION,
+        HOST_RESPONSE_TIME,
+        HOST_RESPONSE_RATE AS HOST_RESPONSE_RATE_PERCENT,
+        HOST_ACCEPTANCE_RATE AS HOST_ACCEPTANCE_RATE_PERCENT,
+        HOST_IS_SUPERHOST,
+        HOST_TOTAL_LISTINGS_COUNT,
+        HOST_HAS_PROFILE_PIC,
+        HOST_IDENTITY_VERIFIED,
+        NEIGHBOURHOOD,
+        DISTRICT,
+        CITY,
+        LATITUDE,
+        LONGITUDE,
+        PROPERTY_TYPE,
+        ROOM_TYPE,
+        ACCOMMODATES,
+        BEDROOMS,
+        AMENITIES,
+        PRICE,
+        MINIMUM_NIGHTS,
+        MAXIMUM_NIGHTS,
+        REVIEW_SCORES_RATING,
+        REVIEW_SCORES_ACCURACY,
+        REVIEW_SCORES_CLEANLINESS,
+        REVIEW_SCORES_CHECKIN,
+        REVIEW_SCORES_COMMUNICATION,
+        REVIEW_SCORES_LOCATION,
+        REVIEW_SCORES_VALUE,
+        INSTANT_BOOKABLE
+FROM 
+{{ source('airbnb', 'LISTINGS') }}
+)
+
+SELECT * FROM HOST_LISTINGS
