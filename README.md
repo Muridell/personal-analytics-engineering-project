@@ -1,6 +1,6 @@
-Welcome to your new dbt project!
+Welcome to Murtadha's analytics engineeringg project Using dbt!
 
-### Using the starter project
+### This project contains various sample datasets to be transformed and modelled using dbt and connecting to databases residing on Snowflake
 
 Try running the following commands:
 - dbt run
