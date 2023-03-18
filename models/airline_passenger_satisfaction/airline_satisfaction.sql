@@ -65,7 +65,7 @@ GROUP BY ID
         ,SATISFACTION
 )
 
-SELECT *, ROUND(OVERALL_AVG_RATING, 1),
+SELECT *,
         CASE WHEN (ROUND(OVERALL_AVG_RATING,1) < 3.5) AND SATISFACTION = 'Neutral or Dissatisfied'
              THEN 'Rating correlates with Satisfaction'
              WHEN (ROUND(OVERALL_AVG_RATING,1) >= 3.5) AND SATISFACTION = 'Satisfied'
