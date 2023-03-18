@@ -1,8 +1,8 @@
 {{
     config(
         materialized='table',
-        schema = 'airbnb',
-        tags = ['airbnb']
+        schema = 'airline',
+        tags = ['airline']
     )
 }}
 
