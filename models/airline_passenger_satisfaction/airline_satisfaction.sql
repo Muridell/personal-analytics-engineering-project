@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='table',
+        schema = 'airbnb',
+        tags = ['airbnb']
+    )
+}}
+
 
 WITH passenger_satisfaction as (
 SELECT  ID
