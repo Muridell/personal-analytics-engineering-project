@@ -7,7 +7,7 @@
 }}
 
 
-WITH CHESS AS
+WITH GAMES AS
 (
     SELECT GAME_ID
         ,RATED
@@ -36,4 +36,4 @@ WITH CHESS AS
     {{source('chess','CHESS_GAMES')}}
 )
 
-SELECT * FROM CHESS
+SELECT * FROM GAMES
