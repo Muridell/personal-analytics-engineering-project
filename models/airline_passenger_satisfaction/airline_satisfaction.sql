@@ -11,6 +11,9 @@ WITH passenger_satisfaction as (
 SELECT  ID
         ,GENDER
         ,AGE
+        ,CASE WHEN AGE BETWEEN 1 AND 12 THEN 'Children'
+                WHEN AGE > 12 THEN 'Adult'
+        END AGE_CATEGORY
         ,CUSTOMER_TYPE
         ,TYPE_OF_TRAVEL
         ,CLASS
@@ -42,6 +45,9 @@ FROM
 GROUP BY ID
         ,GENDER
         ,AGE
+        ,CASE WHEN AGE BETWEEN 1 AND 12 THEN 'Children'
+                WHEN AGE > 12 THEN 'Adult'
+        END 
         ,CUSTOMER_TYPE
         ,TYPE_OF_TRAVEL
         ,CLASS
