@@ -28,6 +28,7 @@ sources:
       - name: JORDAN_PLAYOFFS
       - name: LEBRON_CAREER
       - name: LEBRON_PLAYOFFS
+      - name: TEAMS
 
   - name: marketing
     database: MURTADHA_AE_PROJECT
