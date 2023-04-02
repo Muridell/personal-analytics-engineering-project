@@ -2,7 +2,7 @@
     config(
         materialized='table',
         schema = 'lebron_vs_jordan',
-        tags = ['lebron', 'jordan', 'basketball']
+        tags = ['lebron', 'jordan', 'basketball', 'playoffs']
     )
 }}
 
@@ -13,11 +13,20 @@ WITH TEAM AS(
     FROM {{source('jordan_lebron', 'TEAMS')}}
 )
 
-,JOR_CAR AS (
+,JOR_PLAY AS (
     SELECT 'Jordan' AS PLAYER
         ,GAME SEASON_GAME_ID
         ,DATE GAME_DATE
-        ,AGE
+        ,SERIES
+        ,CASE WHEN SERIES = 'EC1' THEN 'Eastern Conference First Round'
+              WHEN SERIES = 'ECS' THEN 'Eastern Conference Semifinals'
+              WHEN SERIES = 'ECF' THEN 'Eastern Conference Finals'
+              WHEN SERIES = 'FIN' THEN 'NBA Finals'
+              WHEN SERIES = 'WC1' THEN 'Western Conference First Round'
+              WHEN SERIES = 'WCS' THEN 'Western Conference Semifinals'
+              WHEN SERIES = 'WCF' THEN 'Western Conference Finals'
+         END SERIES_NAME
+        ,SERIES_GAME
         ,TEAM
         ,T.TEAM_NAME JORDAN_TEAM
         ,OPP
@@ -47,19 +56,28 @@ WITH TEAM AS(
         ,PTS POINTS
         ,GAME_SCORE PRODUCTIVITY
         ,'0.0'::INTEGER IMPACT
-    FROM {{source('jordan_lebron', 'JORDAN_CAREER')}} JC
+    FROM {{source('jordan_lebron', 'JORDAN_PLAYOFFS')}} JP
     JOIN TEAM T
-    ON JC.TEAM = T.ABBREVIATION 
+    ON JP.TEAM = T.ABBREVIATION 
     JOIN TEAM OPP
-    ON JC.OPP = OPP.ABBREVIATION
+    ON JP.OPP = OPP.ABBREVIATION
 )
-,LEB_CAR AS (
+,LEB_PLAY AS (
     SELECT 'Lebron' AS PLAYER
         ,GAME SEASON_GAME_ID
         ,DATE GAME_DATE
-        ,AGE
+        ,SERIES
+        ,CASE WHEN SERIES = 'EC1' THEN 'Eastern Conference First Round'
+              WHEN SERIES = 'ECS' THEN 'Eastern Conference Semifinals'
+              WHEN SERIES = 'ECF' THEN 'Eastern Conference Finals'
+              WHEN SERIES = 'FIN' THEN 'NBA Finals'
+              WHEN SERIES = 'WC1' THEN 'Western Conference First Round'
+              WHEN SERIES = 'WCS' THEN 'Western Conference Semifinals'
+              WHEN SERIES = 'WCF' THEN 'Western Conference Finals'
+         END SERIES_NAME
+        ,SERIES_GAME
         ,TEAM
-        ,T.TEAM_NAME LEBRON_TEAM
+        ,T.TEAM_NAME JORDAN_TEAM
         ,OPP
         ,OPP.TEAM_NAME OPPONENT
         ,RESULT
@@ -87,14 +105,14 @@ WITH TEAM AS(
         ,PTS POINTS
         ,GAME_SCORE PRODUCTIVITY
         ,PLUS_MINUS IMPACT
-    FROM {{source('jordan_lebron', 'LEBRON_CAREER')}} LC
+    FROM {{source('jordan_lebron', 'LEBRON_PLAYOFFS')}} LP
     LEFT JOIN TEAM T
-    ON LC.TEAM = T.ABBREVIATION
+    ON LP.TEAM = T.ABBREVIATION
     JOIN TEAM OPP
-    ON LC.OPP = OPP.ABBREVIATION
+    ON LP.OPP = OPP.ABBREVIATION
 )
 
-SELECT * FROM LEB_CAR
+SELECT * FROM LEB_PLAY
 UNION ALL
-SELECT * FROM JOR_CAR
+SELECT * FROM JOR_PLAY
 ORDER BY 2, 3
