@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='table',
+        schema = 'lebron_vs_jordan',
+        tags = ['lebron', 'jordan', 'basketball']
+    )
+}}
+
 WITH TEAM AS(
     SELECT ABBREVIATION, CITY
         ,CONCAT(CITY,' ',NICKNAME) TEAM_NAME
@@ -37,7 +45,8 @@ WITH TEAM AS(
         ,BLK BLOCKS
         ,TOV TURNOVERS
         ,PTS POINTS
-        ,GAME_SCORE
+        ,GAME_SCORE PRODUCTIVITY
+        ,'0.0'::INTEGER IMPACT
     FROM {{source('jordan_lebron', 'JORDAN_CAREER')}} JC
     JOIN TEAM T
     ON JC.TEAM = T.ABBREVIATION 
@@ -76,7 +85,8 @@ WITH TEAM AS(
         ,BLK BLOCKS
         ,TOV TURNOVERS
         ,PTS POINTS
-        ,GAME_SCORE
+        ,GAME_SCORE PRODUCTIVITY
+        ,PLUS_MINUS IMPACT
     FROM {{source('jordan_lebron', 'LEBRON_CAREER')}} LC
     LEFT JOIN TEAM T
     ON LC.TEAM = T.ABBREVIATION
@@ -87,4 +97,4 @@ WITH TEAM AS(
 SELECT * FROM LEB_CAR
 UNION ALL
 SELECT * FROM JOR_CAR
-ORDER BY 1
+ORDER BY 2, 3
