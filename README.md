@@ -1,6 +1,6 @@
 Welcome to Murtadha's analytics engineeringg project Using dbt!
 
-### This project contains various sample datasets to be transformed and modelled using dbt and connecting to databases residing on Snowflake
+This project contains various sample datasets to be transformed and modelled using dbt and connecting to databases residing on Snowflake
 
 All of the data used in this project were stored in a Google Sheet.
 
